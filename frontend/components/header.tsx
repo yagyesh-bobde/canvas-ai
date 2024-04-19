@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import logo from "../public/logo.png";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Icons } from "./icons";
 import { ModeToggle } from "./ui/mode-toggle";
@@ -11,30 +13,28 @@ const SiteHeader = () => {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex justify-between h-16 max-w-screen-2xl items-center">
-        <Link href="/">
-          <h1 className=" text-lg mr-4  font-bold sm:inline-block">
-            Artify
-          </h1>
-        </Link>
+       <div className="rounded-md ml-4 float-right ">
+          <Image src={logo} alt='logo' height={250} width={250}></Image>
+        </div>
         <div className="flex items-center gap-4">
           <div className="lg:flex md:hidden items-center gap-4">
             <Link
               className="font-bold text-base transition-colors hover:text-foreground/80 text-foreground/60"
               href="/"
             >
+              Home
+            </Link>
+            <Link
+              className="font-bold text-base transition-colors hover:text-foreground/80 text-foreground/60"
+              href="/artplace"
+            >
+              Artplace
+            </Link>
+            <Link
+              className="font-bold text-base transition-colors hover:text-foreground/80 text-foreground/60"
+              href="/about"
+            >
               About
-            </Link>
-            <Link
-              className="font-bold text-base transition-colors hover:text-foreground/80 text-foreground/60"
-              href="/"
-            >
-              Explore
-            </Link>
-            <Link
-              className="font-bold text-base transition-colors hover:text-foreground/80 text-foreground/60"
-              href="/"
-            >
-              Contact Us
             </Link>
           </div>
           {isSignedIn ? (

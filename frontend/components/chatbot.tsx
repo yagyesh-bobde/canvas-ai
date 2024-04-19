@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 
-const page = () => {
+const chatbot = () => {
   const [data, setData] = useState('');
   const [response, setResponse] = useState('')
 
@@ -35,4 +35,4 @@ callLLm()
   )
 }
 
-export default page
+export default chatbot
