@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import SiteHeader from "../components/header"
 import { ClerkProvider } from "@clerk/nextjs";
-
+import Page from "components/chatbot";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default function RootLayout({
           >
             <SiteHeader />
             {children}
+            <Page />
           </ThemeProvider>
         </body>
       </html>
