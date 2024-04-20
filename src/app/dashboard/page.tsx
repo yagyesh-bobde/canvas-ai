@@ -4,9 +4,7 @@ import { UploadButton } from '~/utils/uploadthing'
 const page = () => {
     return (
         <div>
-            <UploadButton endpoint='imageUploader' headers={{
-                "sold" : "true"
-            }} />
+            Welcome to user dashboard
         </div>
     )
 }

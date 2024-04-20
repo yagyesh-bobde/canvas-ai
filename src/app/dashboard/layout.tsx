@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
       <main className="flex w-screen">
         <Sidebar />
+        {children}
       </main>
   );
 }

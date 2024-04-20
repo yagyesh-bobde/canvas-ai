@@ -1,6 +1,9 @@
 import React from 'react'
 import { ModeToggle } from '../toggle'
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { Button } from '../ui/button'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const Header = () => {
     return (
@@ -14,6 +17,11 @@ const Header = () => {
                     <SignInButton />
                 </SignedOut>
                 <SignedIn >
+                    <Link href="/dashboard">
+                        <Button className='flex-center'>
+                                Dashboard
+                        </Button>
+                    </Link>
                     <UserButton />
                 </SignedIn>
             </div>

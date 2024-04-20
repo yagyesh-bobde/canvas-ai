@@ -86,4 +86,8 @@
     .w-responsive {
       @apply w-[90%] lg:w-3/4 mx-auto;
     }
+    
+    .absolute-h-center {
+      @apply absolute left-1/2 -translate-x-1/2;
+    }
   }
