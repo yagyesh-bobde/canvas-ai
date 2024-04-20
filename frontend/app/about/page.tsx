@@ -4,7 +4,7 @@ import { PinContainer } from "components/ui/3d-pin";
 function page() {
   return (
     <div className="h-[100vh] w-[100%]">
-        <div className="flex justify-center text-5xl relative top-[10%]"> The Craftsmen</div>
+      <div className="flex justify-center text-5xl relative top-[10%]"> The Craftsmen</div>
       <div className="flex h-[60%] w-[100%] justify-center gap-[7%]">
         <div className="h-[100%] w-[25%]">
           <div className="flex h-[40rem] w-full items-center justify-center ">
@@ -31,7 +31,7 @@ function page() {
           <div className="h-[60%]">
           <div className="h-[40rem] w-full flex items-center justify-center ">
       <PinContainer
-        title="/ui.aceternity.com"
+        title="https://www.linkedin.com/in/omchillure"
         href=""
       >
         <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
@@ -41,7 +41,6 @@ function page() {
           <div className="text-base !m-0 !p-0 font-normal">
             <span className="text-slate-500 ">
               Tech Stack:
-              More Stack:
             </span>
           </div>
           <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">

@@ -1,9 +1,9 @@
-
+import { MessageCircleMore } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <main className="">
+    <div className="">
 
-    </main>
+    </div>
   );
 }
