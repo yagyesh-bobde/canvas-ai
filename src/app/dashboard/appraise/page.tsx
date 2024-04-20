@@ -1,13 +1,33 @@
-import { UploadButton } from "~/utils/uploadthing";
+import Image from "next/image";
+import AppraiseUpload from "~/components/Upload/Appraise";
+import { db } from "~/server/db";
+import { art } from "~/server/db/schema";
+import { getMyWorks } from "~/server/querries";
 
-export default function Appraise() {
+
+// export const dynamic = "force-dynamic";
+
+export default async function Appraise() {
+
+  const appraisals = await getMyWorks(false);
+  console.log(appraisals);
+
+  const log = await db.select().from(art);
+
+  console.log(log);
   return (
     <div className="">
-      Appraise 
+      <AppraiseUpload />
 
-      <UploadButton endpoint='imageUploader' headers={{
-                "sold" : "true"
-            }} />
+      {
+        appraisals.map((appraise) => {
+          return(
+            <div key={appraise.id} >
+              <Image src={appraise.url} width={200} height={200} alt={appraise.title || `Art work`} />
+            </div>
+          )
+        })
+      }
     </div>
   );
 }

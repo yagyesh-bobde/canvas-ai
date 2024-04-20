@@ -46,7 +46,7 @@ export const art = createTable(
   {
     id: serial("id").primaryKey(),
     // userEmail: serial("user_email").notNull().references(() => user.email),
-    userId: varchar("user_id", { length: 500}).notNull().unique(),
+    userId: varchar("user_id", { length: 500}).notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }),
     url: varchar("url", { length: 1024 }).notNull(),
