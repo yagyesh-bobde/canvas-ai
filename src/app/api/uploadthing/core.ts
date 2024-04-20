@@ -1,6 +1,8 @@
 import { auth } from '@clerk/nextjs/server'
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
+import { db } from '~/server/db';
+import { art } from '~/server/db/schema';
  
 const f = createUploadthing();
  
@@ -12,12 +14,27 @@ export const ourFileRouter = {
     .middleware(async ({ req }) => {
       // This code runs on your server before upload
       const user = auth();
-      console.log(req.headers.get("sold"))
+      
+      // GET REQUEST HEADERS 
+      const selfArt = req.headers.get("selfArt") === "true" ? true : false;
+      const title = req.headers.get("title");
+      const description = req.headers.get("description");
+      const estimatePrice = parseFloat(req.headers.get("estimatePrice")!);
+      const realPrice = parseFloat(req.headers.get("realPrice")!);
+      const onSale = req.headers.get("onSale") === "true" ? true : false;
+
       // If you throw, the user will not be able to upload
       if (!user.userId) throw new UploadThingError("Unauthorized");
  
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: user.userId };
+      return { userId: user.userId, data: {
+        selfArt,
+        title,
+        description,
+        estimatePrice,
+        realPrice,
+        onSale,
+      } };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
@@ -25,7 +42,20 @@ export const ourFileRouter = {
       console.log("meatadata", metadata);
  
       console.log("file url", file.url);
- 
+      
+      // create art work and store in db
+      await db.insert(art).values({
+        userId: metadata.userId,
+        title: metadata.data.title ?? file.name,
+        description: metadata.data.description,
+        selfArt: metadata.data.selfArt,
+        url: file.url,
+        estimatePrice: metadata.data.estimatePrice,
+        realPrice: metadata.data.realPrice,
+        onSale: metadata.data.onSale,
+      })
+
+
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId };
     }),

@@ -1,22 +1,28 @@
 import { headers } from "next/headers";
 import Image from "next/image";
 import Header from "~/components/Header/Header";
+import { db } from "~/server/db";
+import { getImages } from "~/server/querries";
 
 
+export const dynamic = "force-dynamic";
 
-export default function page() {
-    headers();
-    const images = ["https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg", "https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg", "https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg"]
+
+export default async function page() {
+    // headers();
     
+    const artWorks = await getImages();
+
+    console.log(artWorks);
     
     return (
         <main className="w-responsive">
-      <Header />
-      <div className="flex flex-wrap">
-        {images.map((image, index) => (
-          <Image src={image} key={index} width={200} height={200} alt="random image" />
-        ))}
-      </div>
-    </main>
+          <Header />
+          <div className="flex flex-wrap">
+            {artWorks.map((art) => (
+              <Image src={art.url} key={art.id} width={200} height={200} alt={art.title || `Art work`} />
+            ))}
+          </div>
+        </main>
     )
 }
