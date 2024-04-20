@@ -20,32 +20,33 @@ import {
  */
 export const createTable = pgTableCreator((name) => `canvas-ai_${name}`);
 
-export const user = createTable(
-  "user",
-  {
-    id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
-    email: varchar("email", { length: 256 }).unique().primaryKey(),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt"),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+// export const user = createTable(
+//   "user",
+//   {
+//     id: serial("id").primaryKey(),
+//     name: varchar("name", { length: 256 }),
+//     email: varchar("email", { length: 256 }).unique().primaryKey(),
+//     createdAt: timestamp("created_at")
+//       .default(sql`CURRENT_TIMESTAMP`)
+//       .notNull(),
+//     updatedAt: timestamp("updatedAt"),
+//   },
+//   (example) => ({
+//     nameIndex: index("name_idx").on(example.name),
+//   })
+// );
 
-// many-to-many relationship with user and art
-export const userRelations = relations(user, ({ many }) => ({
-  arts: many(art)
-}))
+// // many-to-many relationship with user and art
+// export const userRelations = relations(user, ({ many }) => ({
+//   arts: many(art)
+// }))
 
 export const art = createTable(
   "art",
   {
     id: serial("id").primaryKey(),
-    userEmail: serial("user_email").notNull().references(() => user.email),
+    // userEmail: serial("user_email").notNull().references(() => user.email),
+    userId: varchar("user_id", { length: 500}).notNull().unique(),
     title: varchar("title", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }),
     url: varchar("url", { length: 1024 }).notNull(),
@@ -64,10 +65,10 @@ export const art = createTable(
 );
 
 
-// one-to-many relationship with artWork to user
-export const artRelations = relations(art, ({ one }) => ({
-  artist : one(user, {
-    fields: [art.userEmail],
-    references: [user.id],
-  })
-}))
+// // one-to-many relationship with artWork to user
+// export const artRelations = relations(art, ({ one }) => ({
+//   artist : one(user, {
+//     fields: [art.userEmail],
+//     references: [user.id],
+//   })
+// }))
