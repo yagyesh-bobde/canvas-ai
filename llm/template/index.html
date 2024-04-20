@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question-Answering App</title>
+</head>
+<body>
+    <h1>Question-Answering System</h1>
+    <form method="POST" action="/get-response">
+        <label for="question">Ask a question:</label>
+        <textarea id="question" name="question" rows="5" cols="30"></textarea>
+        <br>
+        <button type="submit">Ask</button>
+    </form>
+    {% if question %}
+        <h2>Your Question:</h2>
+        <p>{{ question }}</p>
+        <h2>Answer:</h2>
+        <p>{{ answer }}</p>
+    {% endif %}
+</body>
+</html>
