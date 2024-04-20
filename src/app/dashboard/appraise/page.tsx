@@ -16,18 +16,24 @@ export default async function Appraise() {
 
   console.log(log);
   return (
-    <div className="">
+    <div className="p-14 space-y-12">
+      <h1 className="font-bold text-lg sm:text-xl lg:text-3xl">
+          Works Appraised
+      </h1>
+      
       <AppraiseUpload />
 
-      {
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {
         appraisals.map((appraise) => {
           return(
             <div key={appraise.id} >
-              <Image src={appraise.url} width={200} height={200} alt={appraise.title || `Art work`} />
+              <Image src={appraise.url} width={300} height={300} alt={appraise.title || `Art work`} />
             </div>
           )
         })
       }
+      </div>
     </div>
   );
 }

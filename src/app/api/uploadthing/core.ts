@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server'
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
+import { toast } from '~/components/ui/use-toast';
 import { db } from '~/server/db';
 import { art } from '~/server/db/schema';
  
@@ -38,11 +39,6 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete for userId:", metadata.userId);
-      console.log("meatadata", metadata);
- 
-      console.log("file url", file.url);
-      
       // create art work and store in db
       await db.insert(art).values({
         userId: metadata.userId,

@@ -5,7 +5,7 @@ import { ThemeProvider } from "~/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
- 
+import { Toaster } from "~/components/ui/toaster"
 import { ourFileRouter } from "~/app/api/uploadthing/core";
 
 
@@ -49,6 +49,7 @@ export default function RootLayout({
               >
               {children}
             </ThemeProvider>  
+            <Toaster />
           </body>
       </html>
     </ClerkProvider>

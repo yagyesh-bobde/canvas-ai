@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { Input } from '../ui/input'
 import { UploadButton } from '~/utils/uploadthing'
 import { useRouter } from 'next/navigation'
+import { toast } from '../ui/use-toast'
 
 const ArtUpload = () => {
     const [title, settitle] = useState("")
@@ -29,6 +30,10 @@ const ArtUpload = () => {
             
              onClientUploadComplete={() => {
                 router.refresh()
+                toast({
+                    title: "✅ Art work uploaded",
+                    
+                })
             }}
             />
         </div>
