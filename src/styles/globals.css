@@ -74,3 +74,13 @@
       @apply bg-background text-foreground;
     }
   }
+
+
+  @layer components {
+    .flex-center-between {
+      @apply flex items-center justify-between;
+    }
+    .w-responsive {
+      @apply w-[90%] lg:w-3/4 mx-auto;
+    }
+  }
