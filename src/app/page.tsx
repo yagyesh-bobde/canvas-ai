@@ -11,7 +11,7 @@ export default async function HomePage() {
   const images = ["https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg", "https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg", "https://i.ytimg.com/vi/8NMJxyDwP6A/maxresdefault.jpg"]
   
 
-  const posts = await db.query.posts.findMany();
+  const users = await db.query.user.findMany();
   
   return (
     <main className="w-responsive">

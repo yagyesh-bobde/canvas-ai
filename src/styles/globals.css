@@ -77,6 +77,9 @@
 
 
   @layer components {
+    .flex-center {
+      @apply flex items-center justify-center;
+    }
     .flex-center-between {
       @apply flex items-center justify-between;
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ModeToggle } from '../toggle'
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 const Header = () => {
     return (
@@ -7,7 +8,15 @@ const Header = () => {
             <div className="font-extrabold">
                 CANVAS AI
             </div>
-            <ModeToggle />
+            <div className='flex-center gap-4'>
+                <ModeToggle />
+                <SignedOut>
+                    <SignInButton />
+                </SignedOut>
+                <SignedIn >
+                    <UserButton />
+                </SignedIn>
+            </div>
         </div>
     )
 }
