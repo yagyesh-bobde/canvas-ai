@@ -32,7 +32,7 @@ const Sidebar = () => {
     
     
     return (
-        <div className='absolute z-10 w-full bottom-0 lg:relative lg:w-[350px] lg:h-full lg:min-h-screen lg:border-r border-black/40 dark:border-white/40 flex items-center px-5'> 
+        <div className='fixed z-10 w-full bottom-0 lg:relative lg:w-[350px] lg:h-full lg:min-h-screen lg:border-r border-black/40 dark:border-white/40 flex items-center px-5'> 
             <h2 className='max-lg:hidden lg:absolute left-5 top-14 text-4xl font-semibold'>
                 Dashboard
             </h2>
