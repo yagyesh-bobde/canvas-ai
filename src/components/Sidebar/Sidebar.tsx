@@ -47,6 +47,11 @@ const Sidebar = () => {
                     </Link>
                 ))}
             </ul>
+
+            <div className='flex-center-between w-3/4 max-lg:hidden lg:absolute left-5 bottom-14 text-lg font-semibold text-gray-300'>
+                <Link href="/">Home</Link>
+                <Link href="/explore">Explore</Link>
+            </div>
         </div>
     )
 }
