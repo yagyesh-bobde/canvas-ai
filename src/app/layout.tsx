@@ -7,6 +7,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { Toaster } from "~/components/ui/toaster"
 import { ourFileRouter } from "~/app/api/uploadthing/core";
+import AI from "~/components/AI";
 
 
 const inter = Inter({
@@ -48,6 +49,7 @@ export default function RootLayout({
               disableTransitionOnChange
               >
               {children}
+              <AI />
             </ThemeProvider>  
             <Toaster />
           </body>
