@@ -9,7 +9,7 @@ A online art evaluator and marketplace for all art fanatics.
 5. Vercel (f/ hosting)
 6. Tailwind (f/ css)
 7. Typescript (f/ types)
-
+8. UploadThing (f/ file upload)
 
 ## Getting Started Locally
 *NOTE: If you don't have pnpm installed, use npm instead*
