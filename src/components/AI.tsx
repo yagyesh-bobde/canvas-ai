@@ -40,44 +40,20 @@ export default function AI() {
           <div className="flex flex-col gap-2 font-sans w-[90%]">
             Jarvis
             <div className="bg-black ml-1.5 h-[75%] w-[95%] rounded-md text-white p-2 pl-2">
-              {/* {response} This is the response */}
               {response.slice(0,300)}
             </div>
             <div className="flex flex-row gap-2 w-[95%] ml-1.5">
-              <input className="w-[82%] rounded-md text-white pl-1 text-md" type="text" value={data} onChange={e => setData(e.target.value)}></input>
+              <input className="w-[82%] rounded-md text-white pl-1 text-md" placeholder="Search" type="text" value={data} onChange={e => setData(e.target.value)}></input>
               <button className="bg-cyan-500 w-[24%] rounded-md text-sm" onClick={handleChatResponse} > 
                 <MessageSquareReply />
              </button>
+            </div>
+            <div>
+              <button className="bg-cyan-500 w-[95%] h-6 rounded-md text-sm mb-3 ml-1.5">Switch to Voice Assisstant</button>
             </div>
           </div>
         </div>
       </div> 
     );
-  // const [isChatbotOpen, setIsChatbotOpen] = React.useState(false);
-  // 
-  // const [response, setResponse] = useState('')
-  
-  
 
-  // const chatbot = () => {
-    
-  
-  //   const callLLm = async () => {
-  //     fetch(`http://localhost:5000/get-response?question=${data}`)
-  //     .then(response => response.text())
-  //     .then(data => setResponse(data))
-  //     .catch(e => console.log(e))
-  
-  //     console.log(response)
-  //   }
-  
-  //   useEffect(() => {
-  //     callLLm()
-  //   }, [])
-
-  //   return (
-      
-  // }
-
-  // return chatbot();
 }
