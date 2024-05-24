@@ -10,7 +10,7 @@ export async function getMyWorks( showArt: boolean ){
 
     if(!user) return [];
 
-    const artWork = await db.select().from(art).where(and(eq(art.userId, user.id), eq(art.selfArt, showArt)))
+    const artWork = await db.select().from(art).where(and(eq(art.userId, user.id), eq(art.selfPdf, showArt)))
     return artWork;
 }
 

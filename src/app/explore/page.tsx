@@ -23,8 +23,8 @@ export default async function page() {
               <div key={art.id} className="relative border rounded-xl p-5 flex flex-col gap-8 w-full h-full">
                 <Image src={art.url} key={art.id} width={200} height={200} alt={art.title || `Art work`} className="flex-1 object-cover object-center mx-auto" />
                 <div className="flex-center-between">
-                  <h3>John Doe</h3>
-                  <p>$100</p>
+                  <h3> {art.title} </h3>
+                  <p> {art.description} </p>
                 </div>
               </div>
             ))}

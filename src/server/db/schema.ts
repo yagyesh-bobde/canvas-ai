@@ -18,7 +18,7 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `canvas-ai_${name}`);
+export const createTable = pgTableCreator((name) => `${name}`);
 
 // export const user = createTable(
 //   "user",
@@ -45,19 +45,15 @@ export const art = createTable(
   "art",
   {
     id: serial("id").primaryKey(),
-    // userEmail: serial("user_email").notNull().references(() => user.email),
     userId: varchar("user_id", { length: 500}).notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }),
     url: varchar("url", { length: 1024 }).notNull(),
-    estimatePrice: real("estimated_price"),
-    realPrice: real("real_price"),
-    selfArt : boolean("self_art"), // is self_art - True or False (for estimating price)
-    onSale : boolean("on_sale"), // is on sale - True or False
+    selfPdf : boolean("self_art"), 
+    onSale : boolean("on_sale"),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-    updatedAt: timestamp("updatedAt"),
   },
   (example) => ({
     titleIndex: index("title_idx").on(example.title),
